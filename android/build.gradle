@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath libs.gradle
+        classpath libs.google.services
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+apply from: "variables.gradle"
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    configurations.all {
+        resolutionStrategy {
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+            force 'androidx.core:core-ktx:1.12.0'
+        }
+    }
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                if (compileSdk == null || compileSdk < rootProject.ext.compileSdk) {
+                    compileSdk rootProject.ext.compileSdk
+                }
+                if (defaultConfig.minSdk == null || defaultConfig.minSdk < rootProject.ext.minSdk) {
+                    defaultConfig.minSdk rootProject.ext.minSdk
+                }
+                if (defaultConfig.targetSdk == null || defaultConfig.targetSdk < rootProject.ext.targetSdk) {
+                    defaultConfig.targetSdk rootProject.ext.targetSdk
+                }
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

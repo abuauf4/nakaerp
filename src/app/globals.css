@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    
+    /* Surfaces */
+    --surface-lowest: #ffffff;
+    --surface-lowest-rgb: 255, 255, 255;
+    --surface-low: #f8fafc;
+    --surface: #f1f5f9;
+    --surface-high: #e2e8f0;
+    --surface-highest: #cbd5e1;
+    --surface-variant: #e2e8f0;
+
+    /* Text */
+    --on-surface: #0f172a;
+    --on-surface-variant: #475569;
+    --outline: #7c8ea1;
+    --outline-variant: #cbd5e1;
+
+    /* Accents */
+    --primary: #4f46e5;
+    --on-primary: #ffffff;
+    --primary-container: #e0e7ff;
+    --on-primary-container: #3730a3;
+
+    --secondary: #0ea5e9;
+    --secondary-container: #e0f2fe;
+
+    --tertiary: #f59e0b;
+    --tertiary-container: #fef3c7;
+
+    --error: #ef4444;
+    --error-container: #fee2e2;
+  }
+
+  .dark {
+    --background: #001a1f; /* Solarized Deep Teal */
+    --foreground: #93a1a1;
+    
+    /* Solarized Dark Surfaces */
+    --surface-lowest: #00212b;
+    --surface-lowest-rgb: 0, 33, 43;
+    --surface-low: #002b36;
+    --surface: #073642;
+    --surface-high: #586e75;
+    --surface-highest: #657b83;
+    --surface-variant: #002b36;
+
+    --on-surface: #eee8d5;
+    --on-surface-variant: #839496;
+    --outline: #586e75;
+    --outline-variant: #073642;
+
+    /* Solarized Accents */
+    --primary: #2aa198; /* Solarized Cyan */
+    --on-primary: #001e26;
+    --primary-container: #002b36;
+    --on-primary-container: #2aa198;
+
+    --secondary: #268bd2; /* Solarized Blue */
+    --secondary-container: #002b36;
+
+    --tertiary: #b58900; /* Solarized Yellow */
+    --tertiary-container: #002b36;
+
+    --error: #dc322f; /* Solarized Red */
+    --error-container: #3d0a09;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply font-sans antialiased transition-colors duration-300;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Premium structural panels */
+  .glass-panel {
+    background-color: rgba(var(--surface-lowest-rgb), 0.7);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    @apply border border-outline-variant shadow-sm transition-all duration-300;
+  }
+  
+  /* Standard interactive cards */
+  .premium-card {
+    background-color: var(--surface-lowest);
+    @apply rounded-2xl border border-outline-variant shadow-sm transition-all duration-500 overflow-hidden relative;
+  }
+
+  .premium-card:hover {
+    @apply shadow-lg border-primary;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+
+  .dark .premium-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+  }
+
+  /* Vibrant typography and fills */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  }
+  
+  .technical-gradient {
+    @apply text-on-primary font-bold shadow-lg shadow-primary;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

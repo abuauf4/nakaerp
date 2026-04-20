@@ -1,0 +1,52 @@
+{
+  "name": "naka-erp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "npx drizzle-kit push",
+    "db:studio": "npx drizzle-kit studio",
+    "db:seed": "npx tsx src/db/seed.ts"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.3.1",
+    "@capacitor/camera": "^8.1.0",
+    "@capacitor/cli": "^8.3.1",
+    "@capacitor/core": "^8.3.1",
+    "@capacitor/filesystem": "^8.1.2",
+    "@ionic/pwa-elements": "^3.4.0",
+    "bcryptjs": "^3.0.3",
+    "clsx": "2.1.1",
+    "dotenv": "16.4.5",
+    "drizzle-orm": "^0.30.10",
+    "framer-motion": "^12.38.0",
+    "html5-qrcode": "^2.3.8",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.7",
+    "lucide-react": "0.378.0",
+    "next": "14.2.3",
+    "next-themes": "^0.4.6",
+    "postgres": "3.4.4",
+    "react": "18.3.1",
+    "react-barcode": "^1.6.1",
+    "react-dom": "18.3.1",
+    "tailwind-merge": "2.3.0",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "20.12.12",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "10.4.19",
+    "drizzle-kit": "^0.21.4",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.3",
+    "postcss": "8.4.38",
+    "tailwindcss": "3.4.3",
+    "typescript": "5.4.5"
+  }
+}
